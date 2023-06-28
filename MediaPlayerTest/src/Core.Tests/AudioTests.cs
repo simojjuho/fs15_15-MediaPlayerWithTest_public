@@ -1,14 +1,17 @@
-using MediaPlayer.src.Domain.Core;
+using System.Text;
+using MediaPlayer.Domain.Core;
 
 namespace MediaPlayerTest.Core.Tests;
 
 public class AudioTests
 {
+    private StringBuilder _content { get; } = new();
     private Audio _audio { get; set; }
     
     public AudioTests()
-    {
-        _audio = new Audio("audio1", "./audio1", new TimeSpan(0, 0, 3, 30), 1.0);
+    { 
+        var logger = new StringWriter(_content);
+        _audio = new Audio("audio1", "./audio1", new TimeSpan(0, 0, 3, 30), 1.0, logger);
     }
     
     [Fact]
@@ -35,5 +38,13 @@ public class AudioTests
     public void SetPlaybackSpeed_InvalidValue_TrowsException(double speed)
     {
         Assert.Throws<ArgumentException>(() => _audio.Speed = speed);
+    }
+
+    [Fact]
+    public void Play_IsPlayingFalse_GetConsoleMessage()
+    {
+        _audio.Play();
+        
+        Assert.Equal("Playing...", _content.ToString());
     }
 }

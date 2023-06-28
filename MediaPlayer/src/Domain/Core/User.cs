@@ -1,4 +1,4 @@
-namespace MediaPlayer.src.Domain.Core
+namespace MediaPlayer.Domain.Core
 {
     public class User : BaseEntity
     {

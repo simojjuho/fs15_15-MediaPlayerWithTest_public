@@ -1,8 +1,7 @@
-using MediaPlayer.src.Business.ServiceInterface;
-using MediaPlayer.src.Domain.Core;
-using MediaPlayer.src.Domain.RepositoryInterface;
+using MediaPlayer.Business.ServiceInterface;
+using MediaPlayer.Domain.RepositoryInterface;
 
-namespace MediaPlayer.src.Business.Sevice
+namespace MediaPlayer.Business.Sevice
 {
     public class MediaService : IMediaService
     {

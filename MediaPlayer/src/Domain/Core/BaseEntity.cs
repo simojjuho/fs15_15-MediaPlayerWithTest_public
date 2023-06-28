@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MediaPlayer.src.Domain.Core
+namespace MediaPlayer.Domain.Core
 {
     public abstract class BaseEntity
     {

@@ -1,6 +1,6 @@
-using MediaPlayer.src.Business.ServiceInterface;
+using MediaPlayer.Business.ServiceInterface;
 
-namespace MediaPlayer.src.Application
+namespace MediaPlayer.Application
 {
     public class UserController
     {

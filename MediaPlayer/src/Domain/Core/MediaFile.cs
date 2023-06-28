@@ -1,4 +1,4 @@
-namespace MediaPlayer.src.Domain.Core
+namespace MediaPlayer.Domain.Core
 {
     public abstract class MediaFile : BaseEntity
     {
@@ -6,16 +6,14 @@ namespace MediaPlayer.src.Domain.Core
         private bool _isPlaying;
         private TimeSpan _currentPosition;
         private Timer? _timer;
+        private TextWriter _logger;
 
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public TimeSpan Duration { get; set; }
         public double Speed
         {
-            get
-            {
-                return _playbackSpeed;
-            }
+            get => _playbackSpeed;
             set
             {
                 if (IsValidPlaybackSpeed(value))
@@ -32,7 +30,7 @@ namespace MediaPlayer.src.Domain.Core
             }
         }
 
-        public MediaFile(string fileName, string filePath, TimeSpan duration, double speed)
+        protected MediaFile(string fileName, string filePath, TimeSpan duration, double speed, TextWriter logger)
         {
             FileName = fileName;
             FilePath = filePath;
@@ -40,6 +38,7 @@ namespace MediaPlayer.src.Domain.Core
             Speed = speed;
             _isPlaying = false;
             _currentPosition = TimeSpan.Zero;
+            _logger = logger;
         }
 
         public void Play()
@@ -47,7 +46,7 @@ namespace MediaPlayer.src.Domain.Core
             if (!_isPlaying)
             {
                 _isPlaying = true;
-                Console.WriteLine("Playing...");
+                _logger.WriteLine("Playing...");
 
                 // Start a timer to increase the current position every second
                 _timer = new Timer(UpdatePosition, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
