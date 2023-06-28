@@ -6,7 +6,7 @@ namespace MediaPlayer.Domain.Core
         private bool _isPlaying;
         private TimeSpan _currentPosition;
         private Timer? _timer;
-        private TextWriter _logger;
+        private TextWriter _logger { get; }
 
         public string FileName { get; set; }
         public string FilePath { get; set; }
@@ -30,15 +30,15 @@ namespace MediaPlayer.Domain.Core
             }
         }
 
-        protected MediaFile(string fileName, string filePath, TimeSpan duration, double speed, TextWriter logger)
+        protected MediaFile(string fileName, string filePath, TimeSpan duration, TextWriter logger, double speed)
         {
+            _isPlaying = false;
+            _currentPosition = TimeSpan.Zero;
+            _logger = logger;
             FileName = fileName;
             FilePath = filePath;
             Duration = duration;
             Speed = speed;
-            _isPlaying = false;
-            _currentPosition = TimeSpan.Zero;
-            _logger = logger;
         }
 
         public void Play()
@@ -70,7 +70,7 @@ namespace MediaPlayer.Domain.Core
             if (_isPlaying)
             {
                 _isPlaying = false;
-                Console.WriteLine("Stopped.");
+                _logger.WriteLine("Stopped.");
 
                 // Stop the timer and reset the current position
                 _timer?.Change(Timeout.Infinite, Timeout.Infinite);

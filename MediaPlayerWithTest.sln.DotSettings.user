@@ -4,5 +4,8 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::97CB53BF-19BB-4141-BEAB-CA52AFA26210::net7.0::MediaPlayerTest.Core.Tests.AudioTests.Play_IsPlayingFalse_GetConsoleMessage&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::97CB53BF-19BB-4141-BEAB-CA52AFA26210::net7.0::MediaPlayerTest.Core.Tests.AudioTests.CreateNewAudio_ValidValues_InstanceCreated&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::97CB53BF-19BB-4141-BEAB-CA52AFA26210::net7.0::MediaPlayerTest.Core.Tests.AudioTests.SetPlaybackSpeed_ValidValue_IsSet&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::97CB53BF-19BB-4141-BEAB-CA52AFA26210::net7.0::MediaPlayerTest.Core.Tests.AudioTests.SetPlaybackSpeed_InvalidValue_TrowsException&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::97CB53BF-19BB-4141-BEAB-CA52AFA26210::net7.0::MediaPlayerTest.Core.Tests.AudioTests.Stop_Logger_GetConsoleMessage&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

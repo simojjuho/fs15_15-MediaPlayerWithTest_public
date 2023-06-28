@@ -5,11 +5,12 @@ namespace MediaPlayerTest.Core.Tests;
 
 public class AudioTests
 {
-    private StringBuilder _content { get; } = new();
+    private StringBuilder _content { get; set; }
     private Audio _audio { get; set; }
     
     public AudioTests()
     { 
+        _content = new();
         var logger = new StringWriter(_content);
         _audio = new Audio("audio1", "./audio1", new TimeSpan(0, 0, 3, 30), 1.0, logger);
     }
@@ -41,10 +42,19 @@ public class AudioTests
     }
 
     [Fact]
-    public void Play_IsPlayingFalse_GetConsoleMessage()
+    public void Play_Logger_GetConsoleMessage()
     {
         _audio.Play();
         
-        Assert.Equal("Playing...", _content.ToString());
+        Assert.Equal("Playing...\n", _content.ToString());
+    }
+
+    [Fact]
+    public void Stop_Logger_GetConsoleMessage()
+    {
+        _audio.Play();
+        _content.Clear();
+        _audio.Stop();   
+        Assert.Equal("Stopped.\n", _content.ToString());
     }
 }
