@@ -32,12 +32,12 @@ namespace MediaPlayer.src.Domain.Core
             }
         }
 
-        public MediaFile(string fileName, string filePath, TimeSpan duration)
+        public MediaFile(string fileName, string filePath, TimeSpan duration, double speed)
         {
             FileName = fileName;
             FilePath = filePath;
             Duration = duration;
-            Speed = 1;
+            Speed = speed;
             _isPlaying = false;
             _currentPosition = TimeSpan.Zero;
         }
