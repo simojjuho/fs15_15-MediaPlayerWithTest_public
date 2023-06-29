@@ -86,14 +86,12 @@ public abstract class MediaFile : BaseEntity
 
     private void UpdatePosition(object? state)
     {
-        if (_isPlaying)
-        {
-            _currentPosition += TimeSpan.FromSeconds(Speed);
+        if (!_isPlaying) return;
+        _currentPosition += TimeSpan.FromSeconds(Speed);
 
-            if (_currentPosition >= Duration)
-            {
-                Stop();
-            }
+        if (_currentPosition >= Duration)
+        {
+            Stop();
         }
     }
 }

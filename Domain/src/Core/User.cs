@@ -13,20 +13,24 @@ public class User : BaseEntity
 
     public static User Instance => lazyInstance.Value;
 
-    public void AddNewList(PlayList list)
+    public bool AddNewList(PlayList list)
     {
         _lists.Add(list);
+        return _lists.Contains(list);
     }
 
-    public void RemoveOneList(PlayList list)
+    public bool RemoveOneList(PlayList list)
     {
-        _lists.Remove(list);
+        return _lists.Remove(list);
     }
 
-    public void EmptyOneList(PlayList list)
+    public bool EmptyOneList(PlayList list)
     {
         if (_lists.Contains(list))
+        {
             list.EmptyList(GetId);
+            return list.GetAllFiles(GetId).Count == 0;
+        }
         else
             throw new ArgumentNullException("Playlist is not found");
     }

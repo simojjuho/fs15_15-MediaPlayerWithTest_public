@@ -27,22 +27,28 @@ public class PlayList
         }
     }
 
-    public void AddNewFile(MediaFile file, int userId)
+    public bool AddNewFile(MediaFile file, int userId)
     {
         if (CheckUserId(userId))
+        {
             _files.Add(file);
+        }
+
+        return _files.Contains(file);
     }
 
-    public void RemoveFile(MediaFile file, int userId)
+    public bool RemoveFile(MediaFile file, int userId)
     {
         if (CheckUserId(userId))
-            _files.Remove(file);
+            return _files.Remove(file);
+        return false;
     }
 
-    public void EmptyList(int userId)
+    public bool EmptyList(int userId)
     {
         if (CheckUserId(userId))
             _files.Clear();
+        return _files.Count == 0;
     }
 
     private bool CheckUserId(int userId)
