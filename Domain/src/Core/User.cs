@@ -7,6 +7,8 @@ public class User : BaseEntity
 
     public string Name { get; set; } = string.Empty;
 
+    public List<PlayList> Lists => _lists;
+
     private User(){}
 
     public static User Instance => lazyInstance.Value;

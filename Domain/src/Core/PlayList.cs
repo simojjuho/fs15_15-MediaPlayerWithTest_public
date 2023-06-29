@@ -1,3 +1,5 @@
+using System.Security.Authentication;
+
 namespace Domain.Core;
 
 public class PlayList
@@ -11,6 +13,18 @@ public class PlayList
     {
         ListName = name;
         _userId = userId;
+    }
+
+    public List<MediaFile> GetAllFiles(int userId)
+    {
+        if (CheckUserId(userId))
+        {
+            return _files;
+        }
+        else
+        {
+            throw new InvalidCredentialException("Wrong user id");
+        }
     }
 
     public void AddNewFile(MediaFile file, int userId)

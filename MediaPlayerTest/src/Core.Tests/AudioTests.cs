@@ -1,18 +1,18 @@
 using System.Text;
 using Domain.Core;
+using MediaPlayerTest.TestUtils;
 
 namespace MediaPlayerTest.Core.Tests;
 
 public class AudioTests
 {
-    private StringBuilder _content { get; set; }
+    private StringLogger _sl;
     private Audio _audio { get; set; }
     
     public AudioTests()
     { 
-        _content = new();
-        var logger = new StringWriter(_content);
-        _audio = new Audio("audio1", "./audio1", new TimeSpan(0, 0, 3, 30), 1.0, logger);
+        _sl = new();
+        _audio = new Audio("audio1", "./audio1", new TimeSpan(0, 0, 3, 30), 1.0, _sl.Logger);
     }
     
     [Fact]
@@ -46,15 +46,15 @@ public class AudioTests
     {
         _audio.Play();
         
-        Assert.Equal("Playing...\n", _content.ToString());
+        Assert.Equal("Playing...\n", _sl.ToString());
     }
 
     [Fact]
     public void Stop_Logger_GetConsoleMessage()
     {
         _audio.Play();
-        _content.Clear();
+        _sl.EmptyContent();
         _audio.Stop();   
-        Assert.Equal("Stopped.\n", _content.ToString());
+        Assert.Equal("Stopped.\n", _sl.ToString());
     }
 }
