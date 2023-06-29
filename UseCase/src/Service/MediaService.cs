@@ -6,15 +6,17 @@ namespace UseCase.Service;
 public class MediaService : IMediaService
 {
     private readonly IMediaRepository _mediaRepository;
+    private TextWriter _logger;
 
-    public MediaService(IMediaRepository mediaRepository)
+    public MediaService(IMediaRepository mediaRepository, TextWriter logger)
     {
-        _mediaRepository = mediaRepository; 
+        _mediaRepository = mediaRepository;
+        _logger = logger;
     }
 
-    public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+    public void CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger)
     {
-        _mediaRepository.CreateNewFile(fileName, filePath, duration);
+        _mediaRepository.CreateNewFile(fileName, filePath, duration, logger);
     }
 
     public void DeleteFileById(int id)

@@ -4,7 +4,7 @@ namespace Infrastructure.Repository;
 
 public class MediaRepository : IMediaRepository
 {
-    public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+    public void CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger)
     {
         throw new NotImplementedException();
     }
