@@ -1,5 +1,5 @@
 using System.Text;
-using MediaPlayer.Domain.Core;
+using Domain.Core;
 
 namespace MediaPlayerTest.Core.Tests;
 

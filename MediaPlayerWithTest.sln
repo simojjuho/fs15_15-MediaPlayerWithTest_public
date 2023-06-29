@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayer", "MediaPlayer\MediaPlayer.csproj", "{D72517D1-1CA5-4DD8-8DC1-26737C1E8B02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D72517D1-1CA5-4DD8-8DC1-26737C1E8B02}"
 	ProjectSection(ProjectDependencies) = postProject
 		{97CB53BF-19BB-4141-BEAB-CA52AFA26210} = {97CB53BF-19BB-4141-BEAB-CA52AFA26210}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayerTest", "MediaPlayerTest\MediaPlayerTest.csproj", "{97CB53BF-19BB-4141-BEAB-CA52AFA26210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCase", "UseCase\UseCase.csproj", "{0435D520-A8C3-4FFC-AE2C-F133CD0DBCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenter", "Presenter\Presenter.csproj", "{360A7048-187D-4BC6-8971-C6415355E2D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{9C950DC7-5644-41E1-BB31-8093B1F238DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,5 +41,17 @@ Global
 		{97CB53BF-19BB-4141-BEAB-CA52AFA26210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97CB53BF-19BB-4141-BEAB-CA52AFA26210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97CB53BF-19BB-4141-BEAB-CA52AFA26210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0435D520-A8C3-4FFC-AE2C-F133CD0DBCB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0435D520-A8C3-4FFC-AE2C-F133CD0DBCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0435D520-A8C3-4FFC-AE2C-F133CD0DBCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0435D520-A8C3-4FFC-AE2C-F133CD0DBCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360A7048-187D-4BC6-8971-C6415355E2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360A7048-187D-4BC6-8971-C6415355E2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360A7048-187D-4BC6-8971-C6415355E2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360A7048-187D-4BC6-8971-C6415355E2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C950DC7-5644-41E1-BB31-8093B1F238DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C950DC7-5644-41E1-BB31-8093B1F238DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C950DC7-5644-41E1-BB31-8093B1F238DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C950DC7-5644-41E1-BB31-8093B1F238DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
