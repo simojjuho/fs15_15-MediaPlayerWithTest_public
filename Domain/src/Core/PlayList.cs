@@ -5,14 +5,19 @@ namespace Domain.Core;
 public class PlayList
 {
     private readonly List<MediaFile> _files = new();
+    private readonly int _id;
     private readonly int _userId;
 
     public string ListName { get; set; }
 
+    public int GetId => _id;
+
     public PlayList(string name, int userId)
     {
+        var random = new Random();
         ListName = name;
         _userId = userId;
+        _id = random.Next(4000000);
     }
 
     public List<MediaFile> GetAllFiles(int userId)

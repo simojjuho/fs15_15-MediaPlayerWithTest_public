@@ -1,3 +1,4 @@
+using Domain.Core;
 using Domain.RepositoryInterface;
 using UseCase.ServiceInterface;
 
@@ -12,33 +13,33 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public void AddNewList(string name, int userId)
+    public bool AddNewList(string name, int userId)
     {
-        _userRepository.AddNewList(name, userId);
+        return _userRepository.AddNewList(name, userId);
     }
 
-    public void EmptyOneList(int listId, int userId)
+    public bool EmptyOneList(int listId, int userId)
     {
-        _userRepository.EmptyOneList(listId, userId);
+        return _userRepository.EmptyOneList(listId, userId);
     }
 
-    public void GetAllList(int userId)
+    public List<PlayList> GetAllList(int userId)
     {
-        _userRepository.GetAllList(userId);
+        return _userRepository.GetAllList(userId);
     }
 
-    public void GetListById(int listId)
+    public PlayList GetListById(int listId)
     {
-        _userRepository.GetListById(listId);
+        return _userRepository.GetListById(listId);
     }
 
-    public void RemoveAllLists(int userId)
+    public bool RemoveAllLists(int userId)
     {
-        _userRepository.RemoveAllLists(userId);
+        return _userRepository.RemoveAllLists(userId);
     }
 
-    public void RemoveOneList(int listId, int userId)
+    public bool RemoveOneList(int listId, int userId)
     {
-        _userRepository.RemoveOneList(listId, userId);
+        return _userRepository.RemoveOneList(listId, userId);
     }
 }

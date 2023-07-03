@@ -1,9 +1,11 @@
+using Domain.Core;
+
 namespace UseCase.ServiceInterface;
 
 public interface IMediaService
 {
-    void CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger);
-    void DeleteFileById(int id);
-    void GetAllFiles();
-    void GetFileById(int id);
+    bool CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger, MediaType type);
+    bool DeleteFileById(int id);
+    List<MediaFile> GetAllFiles();
+    MediaFile GetFileById(int id);
 }

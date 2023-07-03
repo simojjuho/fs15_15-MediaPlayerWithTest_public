@@ -1,39 +1,75 @@
+using Domain.Core;
+using Domain.Factory;
 using Domain.RepositoryInterface;
 
 namespace Infrastructure.Repository;
 
 public class UserRepository : IUserRepository
 {
-    public UserRepository(){}
+    private List<User> _users;
+    
+    private static UserRepository? _instance { get; set; }
 
-    public void AddNewList(string name, int userId)
+    public static UserRepository Instance => _instance ??= new UserRepository();
+    
+    private UserRepository(){}
+
+    public bool AddNewList(string name, int userId)
     {
-        throw new NotImplementedException();
+        var user = getUserById(userId);
+        return user.AddNewList(EntityFactory.CreatePlaylist(userId, name));
     }
 
-    public void EmptyOneList(int listId, int userId)
+    public bool EmptyOneList(int listId, int userId)
     {
-        throw new NotImplementedException();
+        var user = getUserById(userId);
+        return user.EmptyOneList(listId);
+        }
+
+    public List<PlayList> GetAllList(int userId)
+    {
+        var user = getUserById(userId);
+        return user.Lists;
     }
 
-    public void GetAllList(int userId)
+    public PlayList GetListById(int listId)
     {
-        throw new NotImplementedException();
+        foreach (var user in _users)
+        {
+            var list = user.Lists.Find(_ => _.GetId == listId);
+            if (list is not null) return list;
+        }
+
+        throw new ArgumentException("Incorrect list id");
     }
 
-    public void GetListById(int listId)
+    public bool RemoveAllLists(int userId)
     {
-        throw new NotImplementedException();
+        var user = getUserById(userId);
+        foreach (var list in user.Lists)
+        {
+            user.RemoveOneList(list);
+        }
+
+        return user.Lists.Count == 0;
     }
 
-    public void RemoveAllLists(int userId)
+    public bool RemoveOneList(int listId, int userId)
     {
-        throw new NotImplementedException();
+        var user = getUserById(userId);
+        var list = user.GetPlaylistById(listId);
+        return user.RemoveOneList(list);
     }
 
-    public void RemoveOneList(int listId, int userId)
+    private User getUserById(int userId)
     {
-        throw new NotImplementedException();
+        var user = _users.Find(_ => _.GetId == userId);
+        if (user is not null)
+        {
+            return user;
+        }
+        
+        throw new ArgumentException("Incorrect user id"); 
     }
 
 }

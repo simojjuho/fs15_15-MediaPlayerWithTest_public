@@ -1,21 +1,54 @@
+using Domain.Core;
 using Domain.RepositoryInterface;
 
 namespace Infrastructure.Repository;
 
 public class PlayListRepository : IPlayListRepository
 {
-    public void AddNewFile(int playListId, int fileId, int userId)
+    private List<PlayList> _playlists { get; }
+    private IMediaRepository _mediaRepository;
+
+    private static IPlayListRepository? _instance;
+
+    public static IPlayListRepository Instance(IMediaRepository mediaRepo)
     {
-        throw new NotImplementedException();
+        return _instance ??= new PlayListRepository(mediaRepo);
     }
 
-    public void EmptyList(int playListId, int userId)
+    private PlayListRepository(IMediaRepository mediaRepo)
     {
-        throw new NotImplementedException();
+        _playlists = new();
+        _mediaRepository = mediaRepo;
+    }
+    
+    public bool AddNewFile(int playListId, int fileId, int userId)
+    {
+        var playlist = getPlaylistById(playListId);
+        var file = _mediaRepository.GetFileById(fileId);
+        return playlist.AddNewFile(file, userId);
     }
 
-    public void RemoveFile(int playListId, int fileId, int userId)
+    public bool EmptyList(int playListId, int userId)
     {
-        throw new NotImplementedException();
+        var playlist = getPlaylistById(playListId);
+        return playlist.EmptyList(userId);
+    }
+
+    public bool RemoveFile(int playListId, int fileId, int userId)
+    {
+        var playlist = getPlaylistById(playListId);
+        var file = _mediaRepository.GetFileById(fileId);
+        return playlist.RemoveFile(file, userId);
+    }
+
+    private PlayList getPlaylistById(int playlistId)
+    {
+        var playlist = _playlists.Find(_ => _.GetId == playlistId);
+        if (playlist is not null)
+        {
+            return playlist;
+        }
+
+        throw new ArgumentException("Wrong playlist id");
     }
 }

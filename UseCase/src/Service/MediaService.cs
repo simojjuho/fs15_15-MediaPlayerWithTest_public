@@ -1,3 +1,4 @@
+using Domain.Core;
 using Domain.RepositoryInterface;
 using UseCase.ServiceInterface;
 
@@ -14,23 +15,23 @@ public class MediaService : IMediaService
         _logger = logger;
     }
 
-    public void CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger)
+    public bool CreateNewFile(string fileName, string filePath, TimeSpan duration, TextWriter logger, MediaType type)
     {
-        _mediaRepository.CreateNewFile(fileName, filePath, duration, logger);
+        return _mediaRepository.CreateNewFile(fileName, filePath, duration, logger, type);
     }
 
-    public void DeleteFileById(int id)
+    public bool DeleteFileById(int id)
     {
-        _mediaRepository.DeleteFileById(id);
+        return _mediaRepository.DeleteFileById(id);
     }
 
-    public void GetAllFiles()
+    public List<MediaFile> GetAllFiles()
     {
-        _mediaRepository.GetAllFiles();
+        return _mediaRepository.GetAllFiles();
     }
 
-    public void GetFileById(int id)
+    public MediaFile GetFileById(int id)
     {
-        _mediaRepository.GetFileById(id);
+        return _mediaRepository.GetFileById(id);
     }
 }

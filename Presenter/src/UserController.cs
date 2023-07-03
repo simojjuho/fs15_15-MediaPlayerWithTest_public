@@ -1,3 +1,4 @@
+using Domain.Core;
 using UseCase.ServiceInterface;
 
 namespace Presenter;
@@ -21,23 +22,23 @@ public class UserController
         _userService.EmptyOneList(listId, userId);
     }
 
-    public void GetAllList(int userId)
+    public List<PlayList> GetAllList(int userId)
     {
-        _userService.GetAllList(userId);
+        return _userService.GetAllList(userId);
     }
 
-    public void GetListById(int listId)
+    public PlayList GetListById(int listId)
     {
-        _userService.GetListById(listId);
+        return _userService.GetListById(listId);
     }
 
-    public void RemoveAllLists(int userId)
+    public bool RemoveAllLists(int userId)
     {
-        _userService.RemoveAllLists(userId);
+        return _userService.RemoveAllLists(userId);
     }
 
-    public void RemoveOneList(int listId, int userId)
+    public bool RemoveOneList(int listId, int userId)
     {
-        _userService.RemoveOneList(listId, userId);
+        return _userService.RemoveOneList(listId, userId);
     }
 }

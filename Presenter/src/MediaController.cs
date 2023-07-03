@@ -1,3 +1,4 @@
+using Domain.Core;
 using UseCase.ServiceInterface;
 
 namespace Presenter;
@@ -13,23 +14,23 @@ public class MediaController
         _logger = logger;
     }
 
-    public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+    public bool CreateNewFile(string fileName, string filePath, TimeSpan duration, MediaType type)
     {
-        _mediaService.CreateNewFile(fileName, filePath, duration, _logger);
+        return _mediaService.CreateNewFile(fileName, filePath, duration, _logger, type);
     }
 
-    public void DeleteFileById(int id)
+    public bool DeleteFileById(int id)
     {
-        _mediaService.DeleteFileById(id);
+        return _mediaService.DeleteFileById(id);
     }
 
-    public void GetAllFiles()
+    public List<MediaFile> GetAllFiles()
     {
-        _mediaService.GetAllFiles();
+        return _mediaService.GetAllFiles();
     }
 
-    public void GetFileById(int id)
+    public MediaFile GetFileById(int id)
     {
-        _mediaService.GetFileById(id);
+        return _mediaService.GetFileById(id);
     }
 }

@@ -56,7 +56,7 @@ public class UserTests
         user1.AddNewList(playlist);
         playlist.AddNewFile(song1, user1.GetId);
         playlist.AddNewFile(song2, user1.GetId);
-        user1.EmptyOneList(playlist);
+        user1.EmptyOneList(playlist.GetId);
         
         Assert.Empty(user1.Lists[0].GetAllFiles(user1.GetId));
     }
