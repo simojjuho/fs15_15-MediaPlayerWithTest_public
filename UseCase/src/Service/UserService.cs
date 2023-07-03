@@ -1,4 +1,5 @@
 using Domain.Core;
+using Domain.Core.CoreInterfaces;
 using Domain.RepositoryInterface;
 using UseCase.ServiceInterface;
 
@@ -13,7 +14,7 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public bool AddNewUser(User user)
+    public bool AddNewUser(IUser user)
     {
         return _userRepository.AddNewUser(user);
     }

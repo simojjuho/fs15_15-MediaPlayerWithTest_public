@@ -1,4 +1,5 @@
 using Domain.Core;
+using Domain.Core.CoreInterfaces;
 using Domain.Factory;
 using Domain.RepositoryInterface;
 
@@ -6,7 +7,7 @@ namespace Infrastructure.Repository;
 
 public class UserRepository : IUserRepository
 {
-    private List<User> _users;
+    private List<IUser> _users;
     
     private static UserRepository? _instance { get; set; }
 
@@ -17,7 +18,7 @@ public class UserRepository : IUserRepository
         _users = new();
     }
 
-    public bool AddNewUser(User user)
+    public bool AddNewUser(IUser user)
     {
         _users.Add(user);
         return _users.Contains(user);
@@ -70,7 +71,7 @@ public class UserRepository : IUserRepository
         return user.RemoveOneList(list);
     }
 
-    private User getUserById(int userId)
+    private IUser getUserById(int userId)
     {
         var user = _users.Find(_ => _.GetId == userId);
         if (user is not null)

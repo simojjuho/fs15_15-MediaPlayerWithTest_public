@@ -1,16 +1,25 @@
+using Domain.Core.CoreInterfaces;
+
 namespace Domain.Core;
 
-public class User : BaseEntity
+public class User : BaseEntity, IUser
 {
     private readonly List<PlayList> _lists = new();
+    private int _id;
+    
     private static readonly Lazy<User> _lazyInstance = new(() => new User());
 
     public List<PlayList> Lists => _lists;
     public string Name { get; set; } = "John / Jane Doe";
+    public int GetId => _id;
 
     public static User Instance => _lazyInstance.Value;
 
-    private User(){}
+    private User()
+    {
+        var random = new Random();
+        _id = random.Next(4000000);
+    }
 
     public PlayList GetPlaylistById(int playlistId)
     {

@@ -5,24 +5,25 @@ namespace UseCase.Service;
 
 public class PlayListService : IPlayListService
 {
-    private readonly IPlayListRepository _playList;
+    private readonly IPlayListRepository _playListRepository;
 
-    public PlayListService(IPlayListRepository playList)
+    public PlayListService(IPlayListRepository playListRepository)
     {
-        _playList = playList;
+        _playListRepository = playListRepository;
     }
+    
     public void AddNewFile(int playListId, int fileId, int userId)
     {
-        _playList.AddNewFile(playListId, fileId, userId);
+        _playListRepository.AddNewFile(playListId, fileId, userId);
     }
 
     public void EmptyList(int playListId, int userId)
     {
-        _playList.EmptyList(playListId, userId);
+        _playListRepository.EmptyList(playListId, userId);
     }
 
     public void RemoveFile(int playListId, int fileId, int userId)
     {
-        _playList.RemoveFile(playListId, fileId, userId);
+        _playListRepository.RemoveFile(playListId, fileId, userId);
     }
 }
