@@ -11,8 +11,17 @@ public class UserRepository : IUserRepository
     private static UserRepository? _instance { get; set; }
 
     public static UserRepository Instance => _instance ??= new UserRepository();
-    
-    private UserRepository(){}
+
+    private UserRepository()
+    {
+        _users = new();
+    }
+
+    public bool AddNewUser(User user)
+    {
+        _users.Add(user);
+        return _users.Contains(user);
+    }
 
     public bool AddNewList(string name, int userId)
     {
@@ -71,5 +80,4 @@ public class UserRepository : IUserRepository
         
         throw new ArgumentException("Incorrect user id"); 
     }
-
 }

@@ -1,4 +1,5 @@
 using System.Security.Authentication;
+using System.Text;
 
 namespace Domain.Core;
 
@@ -54,6 +55,19 @@ public class PlayList
         if (CheckUserId(userId))
             _files.Clear();
         return _files.Count == 0;
+    }
+
+    public override string ToString()
+    {
+        var output = new StringBuilder();
+        output.Append($"Playlist {ListName}\n");
+        foreach (var file in _files)
+        {
+            output.Append(file + "\n");
+        }
+
+        output.Append($"---{_files.Count} files---");
+        return output.ToString();
     }
 
     private bool CheckUserId(int userId)

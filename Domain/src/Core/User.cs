@@ -5,13 +5,12 @@ public class User : BaseEntity
     private readonly List<PlayList> _lists = new();
     private static readonly Lazy<User> _lazyInstance = new(() => new User());
 
-    public string Name { get; set; } = string.Empty;
-
     public List<PlayList> Lists => _lists;
-
-    private User(){}
+    public string Name { get; set; } = "John / Jane Doe";
 
     public static User Instance => _lazyInstance.Value;
+
+    private User(){}
 
     public PlayList GetPlaylistById(int playlistId)
     {
@@ -39,5 +38,10 @@ public class User : BaseEntity
     {
         var list = Lists.Find(_ => _.EmptyList(GetId));
         return list is not null && list.EmptyList(GetId);
+    }
+
+    public override string ToString()
+    {
+        return $"User: {GetId}, {Name}";
     }
 }

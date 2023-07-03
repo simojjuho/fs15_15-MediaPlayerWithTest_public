@@ -13,6 +13,11 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
+    public bool AddNewUser(User user)
+    {
+        return _userRepository.AddNewUser(user);
+    }
+
     public bool AddNewList(string name, int userId)
     {
         return _userRepository.AddNewList(name, userId);

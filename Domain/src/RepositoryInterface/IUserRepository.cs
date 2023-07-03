@@ -4,6 +4,7 @@ namespace Domain.RepositoryInterface;
 
 public interface IUserRepository
 {
+    bool AddNewUser(User user);
     bool AddNewList(string name, int userId);
     bool RemoveOneList(int listId, int userId);
     bool RemoveAllLists(int userId);

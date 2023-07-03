@@ -12,6 +12,11 @@ public class UserController
         _userService = userService;
     }
 
+    public bool AddNewUser(User user)
+    {
+        return _userService.AddNewUser(user);
+    }
+
     public void AddNewList(string name, int userId)
     {
         _userService.AddNewList(name, userId);
